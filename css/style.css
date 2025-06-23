@@ -1,0 +1,13 @@
+/* Styling financial overview  */
+#financialOverview {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin-top: 1rem;
+  background-color: #f9f9f9;
+  max-width: 500px;
+}
+/* Adding spacing between each <p> line */
+#financialOverview.p{
+    margin: 0.5rem 0;
+}
+ 

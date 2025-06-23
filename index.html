@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tumaini-Health-System</title>
+    <link rel="stylesheet" href="./css/style.css" />
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="src/index.js" defer></script>
+  </head>
+  <body>
+    <h1>Tumaini Financial Tracker</h1>
+    <!-- Input Form -->
+    <form id="transactionForm">
+      <input type="text" id="description" placeholder="Description" required />
+      <input type="number" id="amount" placeholder="Amount" required />
+      <select id="type">
+        <option value="income">Income</option>
+        <option value="expense">Expense</option>
+      </select>
+      <select>
+        <option value="Sales">Sales</option>
+        <option value="HR">HR</option>
+        <option value="Taxes">Taxes</option>
+      </select>
+      <input type="date" id="date" required />
+      <button type="submit">Add Transaction</button>
+    </form>
+
+    <!-- Transaction list display -->
+    <div id="transactionList"></div>
+    <div id="financialOverview">
+      <h2>Financial Overview</h2>
+      <p>Total Income: <span id="total-income">KES 0</span></p>
+      <p>Total Expenses: <span id="total-expenses">KES 0</span></p>
+      <p>Total Tax Paid: <span id="total-tax">KES 0</span></p>
+      <p><strong>Net Profit:</strong> <span id="net-profit">KES 0</span></p>
+    </div>
+
+    <!-- Charts -->
+    <h2>Visual Overview</h2>
+    <h3>Monthly Income vs Expense</h3>
+    <canvas id="bar-chart" width="400" height="200"></canvas>
+
+    <h3>Financial Trend </h3>
+    <canvas id="line-chart" width="400" height="200"></canvas>
+    
+    <h3>Expense breakdown by Category</h3>
+    <canvas id="pie-chart" width="400" height="200"></canvas>
+  </body>
+</html>
