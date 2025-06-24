@@ -1,0 +1,12 @@
+{
+  "transactions": [
+    {
+      "description": "X-Ray Scan",
+      "amount": 70000,
+      "type": "income",
+      "category": "Sales",
+      "date": "2025-06-24",
+      "id": "f701"
+    }
+  ]
+}
