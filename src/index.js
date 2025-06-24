@@ -28,7 +28,6 @@ function renderTransactions() {
       generateBarChart(transactions);
       renderLineChart(transactions);
       drawExpensePieChart(transactions);
-
     });
 }
 
@@ -72,7 +71,6 @@ form.addEventListener("submit", (e) => {
       form.reset(); // Clear input form
     })
     .catch((error) => console.error("Error adding transaction:", error));
-
 });
 // Updating the category option drop down based on selected transaction type
 const typeSelect = document.getElementById("type");
@@ -101,7 +99,6 @@ populateCategories(typeSelect.value);
 typeSelect.addEventListener("change", () => {
   populateCategories(typeSelect.value);
 });
-
 
 // Delete function
 function attachDeleteListeners() {
@@ -236,7 +233,8 @@ function generateBarChart(transactions) {
     }
   });
   // merging all month names from both monthlyIncome and monthlyExpense into a single list
-  const months = Array.from( new Set([...Object.keys(monthlyIncome), ...Object.keys(monthlyExpense)])
+  const months = Array.from(
+    new Set([...Object.keys(monthlyIncome), ...Object.keys(monthlyExpense)])
   ).sort();
 
   // creating arrays for income and expense values and defaulting monthly income /expense to 0 if it has no value
@@ -281,7 +279,7 @@ function generateBarChart(transactions) {
 
 // Line chart for Financial Trend
 function renderLineChart(transactions) {
-  const labels = [];// dates
+  const labels = []; // dates
   const incomeTrend = [];
   const expenseTrend = [];
 
@@ -292,11 +290,11 @@ function renderLineChart(transactions) {
   transactions.forEach((tnx) => {
     const date = tnx.date;
     const amount = parseFloat(tnx.amount);
-//  checks if daily totals has date
+    //  checks if daily totals has date
     if (!dailyTotals[date]) {
       dailyTotals[date] = { income: 0, expense: 0 };
     }
-   //Adding transaction amount to income or expense
+    //Adding transaction amount to income or expense
     if (tnx.type.toLowerCase() === "income") {
       dailyTotals[date].income += amount;
     } else if (tnx.type.toLowerCase() === "expense") {
@@ -320,13 +318,13 @@ function renderLineChart(transactions) {
       labels: labels, // X-axis dates
       datasets: [
         {
-          label: "Income",  // Y-axis
+          label: "Income", // Y-axis
           borderColor: "green",
           fill: false,
           data: incomeTrend,
         },
         {
-          label: "Expenses",// Y-axis
+          label: "Expenses", // Y-axis
           borderColor: "red",
           fill: false,
           data: expenseTrend,
@@ -345,51 +343,71 @@ function renderLineChart(transactions) {
   });
 }
 
-
-// pie Chart for categories
+// Expense pie chart
 function drawExpensePieChart(transactions) {
-  const categoryTotals = {};
+  // Defining Categories
+  const rawCategoryTotals = {
+    HR: 0,
+    Operations: 0,
+    Supplies: 0,
+    Taxes: 0,
+  };
 
-  transactions.forEach((tx) => {
-    if (tx.type.toLowerCase() === "expense") {
-      const category = tx.category;
-      const amount = parseFloat(tx.amount);
-
-      if (!categoryTotals[category]) {
-        categoryTotals[category] = 0;
+  //  loop through transaction and get Sum for each expense by category
+  transactions.forEach((tnx) => {
+    if (tnx.type.toLowerCase() === "expense") {
+      const category = tnx.category;
+      if (rawCategoryTotals.hasOwnProperty(category)) {
+        rawCategoryTotals[category] += parseFloat(tnx.amount);
       }
-      categoryTotals[category] += amount;
     }
   });
 
-  const labels = Object.keys(categoryTotals);
-  const data = Object.values(categoryTotals);
+  // Filter out categories with 0 amount
+  const filteredEntries = Object.entries(rawCategoryTotals).filter(
+    ([_, value]) => value > 0
+  );
 
+  //  Calculate totals with labels and percentage
+  const total = filteredEntries.reduce((sum, [_, val]) => sum + val, 0);
+
+  // Create labels (Taxes (50%))
+  const labels = filteredEntries.map(([cat, val]) => {
+    const percent = ((val / total) * 100).toFixed(1);
+    return `${cat} (${percent}%)`;
+  });
+
+  const data = filteredEntries.map(([_, val]) => val);
+
+// Render the Pie Chart
   const ctx = document.getElementById("pie-chart").getContext("2d");
 
-  // Destroy existing chart if it exists
-  if (window.pieChartInstance) {
-    window.pieChartInstance.destroy();
-  }
+  //Prepares the chart area and ensures it clears the previous chart if it existed
+  if (window.pieChartInstance) window.pieChartInstance.destroy(); 
 
+  // Create new chart with chart.js
   window.pieChartInstance = new Chart(ctx, {
     type: "pie",
     data: {
       labels: labels,
       datasets: [
         {
-          label: "Expense Breakdown by Category",
+          label: "Expense Breakdown",
           data: data,
-          backgroundColor: [
-            "#FF6384",
-            "#36A2EB",
-            "#FFCE56",
-            "#4BC0C0",
-            "#9966FF",
-            "#FF9F40",
-          ],
+          backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0"],
         },
       ],
+    },
+    options: {
+      plugins: {
+        title: {
+          display: true,
+          text: "Expense Breakdown by Category",
+        },
+        legend: {
+          position: "right",
+        },
+      },
     },
   });
 }
