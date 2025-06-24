@@ -72,7 +72,36 @@ form.addEventListener("submit", (e) => {
       form.reset(); // Clear input form
     })
     .catch((error) => console.error("Error adding transaction:", error));
+
 });
+// Updating the category option drop down based on selected transaction type
+const typeSelect = document.getElementById("type");
+const categorySelect = document.getElementById("category");
+
+//  Defining  categories
+const incomeCategories = ["Sales", "Donations", "Grants"];
+const expenseCategories = ["HR", "Operations", "Supplies", "Taxes"];
+
+//  Function to update category options
+function populateCategories(type) {
+  categorySelect.innerHTML = "";
+  const categories = type === "income" ? incomeCategories : expenseCategories;
+  categories.forEach((cat) => {
+    const option = document.createElement("option");
+    option.value = cat;
+    option.textContent = cat;
+    categorySelect.appendChild(option);
+  });
+}
+
+// Initial load
+populateCategories(typeSelect.value);
+
+// Update categories when type changes
+typeSelect.addEventListener("change", () => {
+  populateCategories(typeSelect.value);
+});
+
 
 // Delete function
 function attachDeleteListeners() {
