@@ -24,6 +24,7 @@ function renderTransactions() {
       });
       attachDeleteListeners();
       attachEditListeners();
+      calculateSummary(transactions);
     });
 }
 
@@ -155,3 +156,28 @@ function attachEditListeners() {
 }
 
 renderTransactions();
+// financial overview display and net profit calculation
+function calculateSummary(transactions){
+  let totalIncome = 0;
+  let totalExpenses = 0;
+  let totalTaxes = 0;
+
+  // looping through each transaction
+  transactions.forEach((tnx) =>{
+    const amount= parseFloat(tnx.amount);
+
+    if (tnx.type.toLowerCase().trim() === "income"){
+       totalIncome += amount;
+    }
+    
+     else if (tnx.type.toLowerCase().trim() === "expense") {
+     
+   totalExpenses += amount;
+    }
+});
+const netProfit = totalIncome - totalExpenses;
+
+  document.getElementById("total-income").textContent = totalIncome.toFixed(2);
+  document.getElementById("total-expenses").textContent = totalExpenses.toFixed(2);
+  document.getElementById("net-profit").textContent = netProfit.toFixed(2);
+}
