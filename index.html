@@ -5,44 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tumaini-Health-System</title>
     <link rel="stylesheet" href="./css/style.css" />
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="src/index.js" defer></script>
   </head>
   <body>
     <h1>Tumaini Financial Tracker</h1>
     <!-- Input Form -->
-    <form id="transactionForm">
-      <input type="text" id="description" placeholder="Description" required />
-      <input type="number" id="amount" placeholder="Amount" required />
-      <select id="type">
-        <option value="income">Income</option>
-        <option value="expense">Expense</option>
-      </select>
-      <select id="category">
-      </select>
-      <input type="date" id="date" required />
-      <button type="submit">Add Transaction</button>
-    </form>
+    <div class="main-layout">
+      <form id="transactionForm">
+        <input
+          type="text"
+          id="description"
+          placeholder="Description"
+          required
+        />
+        <input type="number" id="amount" placeholder="Amount" required />
+        <select id="type">
+          <option value="income">Income</option>
+          <option value="expense">Expense</option>
+        </select>
+        <select id="category"></select>
+        <input type="date" id="date" required />
+        <button type="submit">Add Transaction</button>
+      </form>
+      <div id="financialOverview" class="overview">
+        <h2>Financial Overview</h2>
 
-    <!-- Transaction list display -->
-    <div id="transactionList"></div>
-    <div id="financialOverview" class="overview">
-      <h2>Financial Overview</h2>
-      <p>Total Income: KES <span id="total-income">0</span></p>
-      <p>Total Expenses: KES <span id="total-expenses">0 </span></p>
-      <p><strong>Net Profit:</strong> KES <span id="net-profit">0</span></p>
+        <p>Total Income: KES <span id="total-income">0</span></p>
+        <p>Total Expenses: KES <span id="total-expenses">0 </span></p>
+        <p><strong>Net Profit:</strong> KES <span id="net-profit">0</span></p>
+      </div>
+
+      <!-- Transaction list display -->
+      <div id="transactionList"></div>
     </div>
 
     <!-- Charts and graph -->
     <h2>Visual Overview</h2>
-    
-    <h3>Monthly Income vs Expense</h3>
-    <canvas id="bar-chart" width="400" height="200"></canvas>
-
-    <h3>Financial Trend </h3>
-    <canvas id="line-chart" width="400" height="200"></canvas>
-    
-    <h3>Expense breakdown by Category</h3>
-    <canvas id="pie-chart" width="400" height="200"></canvas>
+    <div class="chart-container">
+      <canvas id="bar-chart" width="400" height="200"></canvas>
+    </div>
+    <div class="chart-container">
+      <canvas id="line-chart" width="300" height="200"></canvas>
+    </div>
+    <div class="chart-container">
+      <canvas id="pie-chart" width="300" height="200"></canvas>
+    </div>
   </body>
 </html>

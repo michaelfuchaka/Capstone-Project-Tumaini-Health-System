@@ -15,7 +15,7 @@ function renderTransactions() {
         // HTML content inside new div
         item.innerHTML = `
     <p>${transaction.description} - KES ${transaction.amount}</p>
-  <p>Type: ${transaction.type} | Category: ${transaction.category} | Date: ${transaction.date}</p>
+  <p> ${transaction.type} |  ${transaction.category} |  ${transaction.date}</p>
   <button data-id="${transaction.id}" class="edit-btn"  >Edit</button>
   <button  data-id="${transaction.id}" class="delete-btn" >Delete</button>
     `;
