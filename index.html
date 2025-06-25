@@ -5,10 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tumaini-Health-System</title>
     <link rel="stylesheet" href="./css/style.css" />
-    
   </head>
   <body>
-    <h1>Tumaini Financial Tracker</h1>
+    <nav class="navbar">
+      <div class="logo">Tumaini Financial Tracker</div>
+      <ul class="nav-links">
+        <li><a href="#home-section">Home</a></li>
+        <li><a href="#transactionForm">Input</a></li>
+        <li><a href="#transactionList">Transaction List</a></li>
+        <li><a href="#financialOverview">Financial Overview</a></li>
+        <li><a href="#visualOverview">Visual Overview</a></li>
+      </ul>
+    </nav>
+    <!-- Home Section -->
+    <section id="home-section">
+  <h1>Welcome to Tumaini Health System</h1>
+  <p>Track your finances with ease and accuracy</p>
+  <a href="#transactionForm" class="cta-button">Go to Input Section</a>
+</section>
     <!-- Input Form -->
     <div class="main-layout">
       <form id="transactionForm">
@@ -27,11 +41,20 @@
         <input type="date" id="date" required />
         <button type="submit">Add Transaction</button>
       </form>
-      
 
       <!-- Transaction list display -->
-      <div id="transactionList"></div>
+      <div id="transactionList">
+        <div class="transaction-header">
+          <div>Description</div>
+          <div>Amount</div>
+          <div>Category</div>
+          <div>Date</div>
+          <div>Type</div>
+          <div>Actions</div>
+        </div>
+      </div>
 
+        <div class="overview-layout">
       <div id="financialOverview" class="overview">
         <h2>Financial Overview</h2>
 
@@ -39,18 +62,20 @@
         <p>Total Expenses: KES <span id="total-expenses">0 </span></p>
         <p><strong>Net Profit:</strong> KES <span id="net-profit">0</span></p>
       </div>
-      
-    <!-- Charts and graph -->
-    <h2>Visual Overview</h2>
-    <div class="chart-container">
-      <canvas id="bar-chart" width="400" height="200"></canvas>
-    </div>
-    <div class="chart-container">
-      <canvas id="line-chart" width="300" height="200"></canvas>
-    </div>
-    <div class="chart-container">
-      <canvas id="pie-chart" width="300" height="200"></canvas>
-    </div>
+      <!-- Charts and graph -->
+      <div id="visualOverview">
+        <!-- <h2>Visual Overview</h2> -->
+        </div>
+        <div class="chart-container">
+          <canvas id="bar-chart" width="400" height="200"></canvas>
+        </div>
+        <div class="chart-container">
+          <canvas id="line-chart" width="300" height="200"></canvas>
+        </div>
+        <div class="chart-container">
+          <canvas id="pie-chart" width="300" height="200"></canvas>
+        </div>
+      </div>
     </div>
 
     <!-- delete pop up succes -->
@@ -72,8 +97,6 @@
     >
       ✅ Transaction deleted successfully!
     </div>
-
-    
 
     <!-- Including SweetAlert2   -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

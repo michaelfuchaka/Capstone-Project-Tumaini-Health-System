@@ -1,33 +1,56 @@
 function renderTransactions() {
-  // clear existing list before loop
-  document.getElementById("transactionList").innerHTML = "";
+  // Clear and create table structure
+  const container = document.getElementById("transactionList");
+  container.innerHTML = `
+    <table class="transaction-table">
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th>Amount (KES)</th>
+          <th>Type</th>
+          <th>Category</th>
+          <th>Date</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="transaction-table-body"></tbody>
+    </table>
+  `;
 
-  // Fetch transactions from json-server
+  // Fetch from JSON Server
   fetch("http://localhost:3000/transactions")
     .then((res) => res.json())
     .then((transactions) => {
-      // Loop through each transaction in the transaction array
-      transactions.forEach((transaction) => {
-        // creating new div
-        const item = document.createElement("div");
-        item.className = "transaction";
+      const tableBody = document.getElementById("transaction-table-body");
 
-        // HTML content inside new div
-        item.innerHTML = `
-    <p>${transaction.description} - KES ${transaction.amount}</p>
-  <p> ${transaction.type} |  ${transaction.category} |  ${transaction.date}</p>
-  <button data-id="${transaction.id}" class="edit-btn"  >Edit</button>
-  <button  data-id="${transaction.id}" class="delete-btn" >Delete</button>
-    `;
-        // Appending item to the list
-        document.getElementById("transactionList").appendChild(item);
+      transactions.forEach((transaction) => {
+        const row = document.createElement("tr");
+
+        row.innerHTML = `
+          <td>${transaction.description}</td>
+          <td>${transaction.amount}</td>
+          <td>${transaction.type}</td>
+          <td>${transaction.category}</td>
+          <td>${transaction.date}</td>
+          <td>
+            <button data-id="${transaction.id}" class="edit-btn">Edit</button>
+            <button data-id="${transaction.id}" class="delete-btn">Delete</button>
+          </td>
+        `;
+
+        tableBody.appendChild(row);
       });
+
+      // Attach events and update data
       attachDeleteListeners();
       attachEditListeners();
       calculateSummary(transactions);
       generateBarChart(transactions);
       renderLineChart(transactions);
       drawExpensePieChart(transactions);
+    })
+    .catch((error) => {
+      console.error("Failed to fetch transactions:", error);
     });
 }
 
@@ -134,7 +157,7 @@ function attachDeleteListeners() {
               window.toastTimeout = setTimeout(() => {
                 customToast.style.display = "none";
                 renderTransactions(); // Re-render only after toast disappears
-              }, 20000); // 
+              }, 20000); //
             })
 
             .catch((err) => {
@@ -442,4 +465,4 @@ function drawExpensePieChart(transactions) {
   });
 }
 
-// Help toast function
+
