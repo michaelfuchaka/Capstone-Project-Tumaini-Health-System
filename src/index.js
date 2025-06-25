@@ -46,7 +46,7 @@ function renderTransactions() {
       attachEditListeners();
       calculateSummary(transactions);
       generateBarChart(transactions);
-      renderLineChart(transactions);
+
       drawExpensePieChart(transactions);
     })
     .catch((error) => {
@@ -101,7 +101,7 @@ const categorySelect = document.getElementById("category");
 
 //  Defining  categories
 const incomeCategories = ["Sales", "Donations", "Grants"];
-const expenseCategories = ["HR", "Operations", "Supplies", "Taxes"];
+const expenseCategories = ["HR", "Admin", "Supplies", "Taxes"];
 
 //  Function to update category options
 function populateCategories(type) {
@@ -330,78 +330,12 @@ function generateBarChart(transactions) {
   });
 }
 
-// Line chart for Financial Trend
-function renderLineChart(transactions) {
-  const labels = []; // dates
-  const incomeTrend = [];
-  const expenseTrend = [];
-
-  // Group transactions by date
-  const dailyTotals = {};
-
-  // Looping through all transactions then add amount based on transaction type
-  transactions.forEach((tnx) => {
-    const date = tnx.date;
-    const amount = parseFloat(tnx.amount);
-    //  checks if daily totals has date
-    if (!dailyTotals[date]) {
-      dailyTotals[date] = { income: 0, expense: 0 };
-    }
-    //Adding transaction amount to income or expense
-    if (tnx.type.toLowerCase() === "income") {
-      dailyTotals[date].income += amount;
-    } else if (tnx.type.toLowerCase() === "expense") {
-      dailyTotals[date].expense += amount;
-    }
-  });
-
-  // Convert daily total to arrays for charts
-  Object.entries(dailyTotals).forEach(([date, totals]) => {
-    labels.push(date); //label get date
-
-    //income and trend get totals for each day
-    incomeTrend.push(totals.income);
-    expenseTrend.push(totals.expense);
-  });
-
-  // Render chart
-  new Chart(document.getElementById("line-chart"), {
-    type: "line",
-    data: {
-      labels: labels, // X-axis dates
-      datasets: [
-        {
-          label: "Income", // Y-axis
-          borderColor: "green",
-          fill: false,
-          data: incomeTrend,
-        },
-        {
-          label: "Expenses", // Y-axis
-          borderColor: "red",
-          fill: false,
-          data: expenseTrend,
-        },
-      ],
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        title: {
-          display: true,
-          text: "Financial Trend Over Time",
-        },
-      },
-    },
-  });
-}
-
 // Expense pie chart
 function drawExpensePieChart(transactions) {
   // Defining Categories
   const rawCategoryTotals = {
     HR: 0,
-    Operations: 0,
+    Admin: 0,
     Supplies: 0,
     Taxes: 0,
   };
@@ -465,4 +399,51 @@ function drawExpensePieChart(transactions) {
   });
 }
 
+// // Admin authorise access
+// // Admin Authorisation on CTA click
+// document.querySelector('.cta-button').addEventListener('click', function (e) {
+//   e.preventDefault(); // Prevent default anchor behavior
 
+//   Swal.fire({
+//     title: 'Admin Access Required',
+//     input: 'password',
+//     inputLabel: 'Enter Admin Password',
+//     inputPlaceholder: 'Enter password',
+//     showCancelButton: true,
+//     confirmButtonText: 'Access',
+//   }).then((result) => {
+//     if (result.isConfirmed && result.value === 'admin123') {
+//       // Grant access
+//       document.querySelector('.main-layout').style.display = 'block';
+//       document.querySelector('.nav-links li:nth-child(2)').style.display = 'list-item'; // Input
+//       document.querySelector('.nav-links li:nth-child(3)').style.display = 'list-item'; // Transaction List
+//       document.querySelector('.nav-links li:nth-child(4)').style.display = 'list-item'; // Financial Overview
+
+// // Fetch and render charts + transactions
+// fetch("http://localhost:3000/transactions")
+//   .then((res) => res.json())
+//   .then((transactions) => {
+//     renderTransactions(); // Still needed for table
+//     generateBarChart(transactions);
+//     renderLineChart(transactions);
+//     drawExpensePieChart(transactions);
+//   });
+
+// // ✅ Scroll to input section
+// document.querySelector('#transactionForm').scrollIntoView({ behavior: 'smooth' });
+
+//       //  Scroll smoothly to input section
+//       document.querySelector('#transactionForm').scrollIntoView({ behavior: 'smooth' });
+//     } else if (result.isConfirmed) {
+//       Swal.fire('Access Denied', 'Incorrect admin password.', 'error');
+//     }
+//   });
+// });
+
+// // Hide protected sections on page load
+// document.addEventListener('DOMContentLoaded', () => {
+//   document.querySelector('.main-layout').style.display = 'none';
+//   document.querySelector('.nav-links li:nth-child(2)').style.display = 'none'; // Input
+//   document.querySelector('.nav-links li:nth-child(3)').style.display = 'none'; // Transaction List
+//   document.querySelector('.nav-links li:nth-child(4)').style.display = 'none'; // Financial Overview
+// });

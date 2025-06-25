@@ -1,19 +1,35 @@
 {
   "transactions": [
     {
-      "description": "Medical Equipment",
-      "amount": 2000,
-      "type": "expense",
-      "category": "Operations",
-      "date": "2025-06-25",
-      "id": "6cde"
-    },
-    {
       "id": "8d8b",
       "description": "X-Ray Scan",
       "amount": 30000,
       "type": "income",
       "category": "Sales",
+      "date": "2025-06-25"
+    },
+    {
+      "id": "4ebc",
+      "description": "X-Ray",
+      "amount": 5000,
+      "type": "expense",
+      "category": "Supplies",
+      "date": "2025-06-25"
+    },
+    {
+      "id": "e2f4",
+      "description": "repairs",
+      "amount": 20000,
+      "type": "income",
+      "category": "Sales",
+      "date": "2025-06-25"
+    },
+    {
+      "id": "1b4b",
+      "description": "Medical Equipment",
+      "amount": 90900,
+      "type": "expense",
+      "category": "Admin",
       "date": "2025-06-25"
     }
   ]

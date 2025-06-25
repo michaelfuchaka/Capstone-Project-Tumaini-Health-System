@@ -370,20 +370,10 @@ canvas {
   font-weight: bold;
 }
 
-/* --- Visual Overview Enhancements --- */
-/* #visualOverview h2 {
-  background-color: #007bff;
-  color: white;
-  padding: 10px;
-  border-radius: 8px;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-size: 18px;
-} */
+
 
 .chart-container {
-  background-color: white;
+  background-color: #f1f1f1;
   padding: 16px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
