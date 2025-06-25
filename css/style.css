@@ -112,10 +112,12 @@ html {
 #transactionForm select {
   padding: 10px 14px;
   font-size: 16px;
+  line-height: 1.5; 
   border: 1px solid #ccc;
   border-radius: 8px;
   outline: none;
   transition: border 0.2s;
+  box-sizing: border-box; /* Optional: just to be safe */
 }
 
 #transactionForm input:focus,
@@ -406,4 +408,12 @@ canvas {
 #visualOverview{
   flex:1;
   max-width:50%;
+}
+
+/* Hide sections */
+#home-section
+#form-section,
+#list-section,
+#overview-section {
+  display: none;
 }

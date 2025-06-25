@@ -399,6 +399,44 @@ function drawExpensePieChart(transactions) {
   });
 }
 
+// Function to show only one section at a time
+function showSection(sectionId) {
+  const allSections = ['home-section', 'form-section', 'list-section', 'overview-section'];
+  allSections.forEach(id => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.style.display = (id === sectionId) ? 'block' : 'none';
+    }
+  });
+}
+
+// Handle navigation clicks
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault(); // Prevent default anchor jump
+    const targetId = link.getAttribute('href').substring(1);
+    showSection(targetId);
+
+    // If overview section is shown, re-render charts and transactions
+    if (targetId === 'overview-section') {
+      fetch("http://localhost:3000/transactions")
+        .then(res => res.json())
+        .then(data => {
+          renderTransactions(); // Updates table
+          generateBarChart(data);
+          drawExpensePieChart(data);
+        });
+    }
+  });
+});
+
+// "Go to Input Section" button (from home)
+document.querySelector('.cta-button').addEventListener('click', function (e) {
+  e.preventDefault();
+  showSection('form-section');
+  document.querySelector('#transactionForm').scrollIntoView({ behavior: 'smooth' });
+});
+
 // // Admin authorise access
 // // Admin Authorisation on CTA click
 // document.querySelector('.cta-button').addEventListener('click', function (e) {

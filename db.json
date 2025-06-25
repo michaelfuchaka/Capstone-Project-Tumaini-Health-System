@@ -25,12 +25,12 @@
       "date": "2025-06-25"
     },
     {
-      "id": "1b4b",
       "description": "Medical Equipment",
       "amount": 90900,
       "type": "expense",
-      "category": "Admin",
-      "date": "2025-06-25"
+      "category": "Supplies",
+      "date": "2025-06-25",
+      "id": "1b4b"
     }
   ]
 }
