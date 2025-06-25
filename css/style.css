@@ -50,11 +50,11 @@ body{
 
 /* Styling transaction list layout */
 .main-layout {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 30px; /* space between form and list */
+
+  display: block;
   padding: 20px;
+
+
 }
 
 #transactionList {
@@ -149,7 +149,7 @@ canvas {
   display: inline-block;
   vertical-align: top;
   box-sizing: border-box;
-  color: #000;
+
 }
 
 #financialOverview p:nth-of-type(2) {

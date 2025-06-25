@@ -100,24 +100,54 @@ typeSelect.addEventListener("change", () => {
   populateCategories(typeSelect.value);
 });
 
-// Delete function
+// Delete function and alerts
 function attachDeleteListeners() {
   const deleteButtons = document.querySelectorAll(".delete-btn");
 
   deleteButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
       const id = btn.dataset.id;
-      const confirmDelete = confirm(
-        "Are you sure you want to delete this transaction?"
-      );
-      // sending delete request to server
-      if (confirmDelete) {
-        fetch(`http://localhost:3000/transactions/${id}`, {
-          method: "DELETE",
-        })
-          .then(() => renderTransactions())
-          .catch((err) => console.error("Error deleting:", err));
-      }
+
+      // Use SweetAlert only for confirmation
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won’t be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#d33",
+        cancelButtonColor: "#3085d6",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          fetch(`http://localhost:3000/transactions/${id}`, {
+            method: "DELETE",
+          })
+            .then(() => {
+              // Show pop up
+              const customToast = document.getElementById("custom-toast");
+              customToast.style.display = "block";
+
+              // Clear any previous timeout to avoid overlap
+              if (window.toastTimeout) clearTimeout(window.toastTimeout);
+
+              // Set a new 3-minute timeout
+              window.toastTimeout = setTimeout(() => {
+                customToast.style.display = "none";
+                renderTransactions(); // Re-render only after toast disappears
+              }, 20000); // 
+            })
+
+            .catch((err) => {
+              console.error("Error deleting:", err);
+
+              Swal.fire({
+                title: "Oops!",
+                text: "Something went wrong. Please try again.",
+                icon: "error",
+              });
+            });
+        }
+      });
     });
   });
 }
@@ -379,11 +409,11 @@ function drawExpensePieChart(transactions) {
 
   const data = filteredEntries.map(([_, val]) => val);
 
-// Render the Pie Chart
+  // Render the Pie Chart
   const ctx = document.getElementById("pie-chart").getContext("2d");
 
   //Prepares the chart area and ensures it clears the previous chart if it existed
-  if (window.pieChartInstance) window.pieChartInstance.destroy(); 
+  if (window.pieChartInstance) window.pieChartInstance.destroy();
 
   // Create new chart with chart.js
   window.pieChartInstance = new Chart(ctx, {
@@ -411,3 +441,5 @@ function drawExpensePieChart(transactions) {
     },
   });
 }
+
+// Help toast function

@@ -1,36 +1,3 @@
 {
-  "transactions": [
-    {
-      "description": "X-Ray Scan",
-      "amount": 70000,
-      "type": "income",
-      "category": "Sales",
-      "date": "2025-06-24",
-      "id": "f701"
-    },
-    {
-      "id": "e18b",
-      "description": "consultation",
-      "amount": 100000,
-      "type": "income",
-      "category": "Sales",
-      "date": "2025-06-24"
-    },
-    {
-      "id": "4f2d",
-      "description": "Medical Equipment",
-      "amount": 25000,
-      "type": "expense",
-      "category": "HR",
-      "date": "2025-06-24"
-    },
-    {
-      "id": "c2b6",
-      "description": "Tax",
-      "amount": 30000,
-      "type": "expense",
-      "category": "Taxes",
-      "date": "2025-06-24"
-    }
-  ]
+  "transactions": []
 }

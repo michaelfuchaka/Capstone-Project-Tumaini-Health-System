@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tumaini-Health-System</title>
     <link rel="stylesheet" href="./css/style.css" />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="src/index.js" defer></script>
+    
   </head>
   <body>
     <h1>Tumaini Financial Tracker</h1>
@@ -28,6 +27,11 @@
         <input type="date" id="date" required />
         <button type="submit">Add Transaction</button>
       </form>
+      
+
+      <!-- Transaction list display -->
+      <div id="transactionList"></div>
+
       <div id="financialOverview" class="overview">
         <h2>Financial Overview</h2>
 
@@ -35,11 +39,7 @@
         <p>Total Expenses: KES <span id="total-expenses">0 </span></p>
         <p><strong>Net Profit:</strong> KES <span id="net-profit">0</span></p>
       </div>
-
-      <!-- Transaction list display -->
-      <div id="transactionList"></div>
-    </div>
-
+      
     <!-- Charts and graph -->
     <h2>Visual Overview</h2>
     <div class="chart-container">
@@ -51,5 +51,35 @@
     <div class="chart-container">
       <canvas id="pie-chart" width="300" height="200"></canvas>
     </div>
+    </div>
+
+    <!-- delete pop up succes -->
+    <div
+      id="custom-toast"
+      style="
+        display: none;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: #4caf50;
+        color: white;
+        padding: 16px 24px;
+        border-radius: 8px;
+        font-size: 18px;
+        z-index: 9999;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      "
+    >
+      ✅ Transaction deleted successfully!
+    </div>
+
+    
+
+    <!-- Including SweetAlert2   -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="src/index.js"></script>
   </body>
 </html>
