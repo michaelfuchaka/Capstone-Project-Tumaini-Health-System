@@ -197,7 +197,7 @@ function attachEditListeners() {
           document.getElementById("date").value = transaction.date;
 
           // Scroll to top for user clarity
-          window.scrollTo({ top: 0, behavior: "smooth" });
+        document.getElementById("form-section").scrollIntoView({ behavior: "smooth" });
 
           // Change button text
           const submitButton = document.querySelector("button[type='submit']");
@@ -227,6 +227,7 @@ function attachEditListeners() {
               form.reset();
               submitButton.textContent = "Add Transaction";
               form.removeEventListener("submit", updateHandler);
+              document.getElementById("list-section").scrollIntoView({behavior:"smooth"});
             });
           };
 
