@@ -240,7 +240,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 For support and questions:
 - Create an issue in the repository
-- Contact [fuchakamichael06@gmail.com](mailto:fuchakamichael06@gmail.com)
+- Contact [fuchakamichael06@gmail.com](fuchakamichael06@gmail.com)
 - Check the troubleshooting section above
 
 ---
