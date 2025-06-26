@@ -395,7 +395,6 @@ function drawExpensePieChart(transactions) {
 
 
 // // Admin authorise access
-// // Admin Authorisation on CTA click
 // document.querySelector('.cta-button').addEventListener('click', function (e) {
 //   e.preventDefault(); // Prevent default anchor behavior
 
