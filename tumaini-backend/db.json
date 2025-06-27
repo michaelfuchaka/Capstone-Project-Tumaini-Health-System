@@ -1,0 +1,116 @@
+{
+  "transactions": [
+    {
+      "id": "8d8b",
+      "description": "X-Ray Scan",
+      "amount": 30000,
+      "type": "income",
+      "category": "Sales",
+      "date": "2025-06-25"
+    },
+    {
+      "id": "4ebc",
+      "description": "X-Ray",
+      "amount": 5000,
+      "type": "expense",
+      "category": "Supplies",
+      "date": "2025-06-25"
+    },
+    {
+      "id": "e2f4",
+      "description": "repairs",
+      "amount": 20000,
+      "type": "income",
+      "category": "Sales",
+      "date": "2025-06-25"
+    },
+    {
+      "description": "Wheel Chair",
+      "amount": 20000,
+      "type": "expense",
+      "category": "HR",
+      "date": "2025-06-25",
+      "id": "1b4b"
+    },
+    {
+      "description": "Salaries",
+      "amount": 5000,
+      "type": "expense",
+      "category": "HR",
+      "date": "2025-06-26",
+      "id": "575b"
+    },
+    {
+      "description": "June Tax",
+      "amount": 500000,
+      "type": "expense",
+      "category": "Taxes",
+      "date": "2025-06-26",
+      "id": "7b3e"
+    },
+    {
+      "description": "beds",
+      "amount": 55000,
+      "type": "expense",
+      "category": "Supplies",
+      "date": "2025-03-26",
+      "id": "12b8"
+    },
+    {
+      "id": "f7cb",
+      "description": "Medical Equipment",
+      "amount": 50000,
+      "type": "income",
+      "category": "Sales",
+      "date": "2025-06-26"
+    },
+    {
+      "id": "fbfe",
+      "description": "Medical Equipment",
+      "amount": 50000,
+      "type": "expense",
+      "category": "HR",
+      "date": "2025-06-26"
+    },
+    {
+      "description": "Surgery",
+      "amount": 45000,
+      "type": "income",
+      "category": "Sales",
+      "date": "2025-06-26",
+      "id": "8836"
+    },
+    {
+      "id": "be11",
+      "description": "Medical Equipment",
+      "amount": 65000,
+      "type": "income",
+      "category": "Sales",
+      "date": "2025-06-26"
+    },
+    {
+      "description": "Manual labor",
+      "amount": 52000,
+      "type": "expense",
+      "category": "HR",
+      "date": "2025-07-26",
+      "id": "6e69"
+    },
+    {
+      "id": "6d53",
+      "description": "Medical Equipment",
+      "amount": 51000,
+      "type": "income",
+      "category": "Donations",
+      "date": "2025-11-26"
+    },
+    {
+      "id": "60f1",
+      "description": "CT-Scan",
+      "amount": 50000,
+      "type": "income",
+      "category": "Sales",
+      "date": "2026-01-26"
+    }
+  ]
+}
