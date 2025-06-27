@@ -414,7 +414,7 @@ function drawExpensePieChart(transactions) {
 //       document.querySelector('.nav-links li:nth-child(4)').style.display = 'list-item'; // Financial Overview
 
 // // Fetch and render charts + transactions
-// fetch("http://localhost:3000/transactions")
+// fetch("https://tumaini-backend-1.onrender.com/transactions")
 //   .then((res) => res.json())
 //   .then((transactions) => {
 //     renderTransactions(); // Still needed for table
