@@ -1,0 +1,8 @@
+# Ignore backend-related folders and files
+node_modules/
+package.json
+package-lock.json
+server.js
+db.json
+tumaini-backend/
+.env
