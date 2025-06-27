@@ -157,7 +157,7 @@ function attachDeleteListeners() {
               window.toastTimeout = setTimeout(() => {
                 customToast.style.display = "none";
                 renderTransactions(); // Re-render only after toast disappears
-              }, 20000); //
+              }, 5000); //
             })
 
             .catch((err) => {
