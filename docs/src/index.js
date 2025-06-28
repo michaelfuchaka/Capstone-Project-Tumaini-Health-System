@@ -392,7 +392,25 @@ function drawExpensePieChart(transactions) {
   });
 }
 
+// Navbar responsiveness
 
+function toggleMenu() {
+  const navLinks = document.getElementById('navLinks');
+  if (navLinks) {
+    navLinks.classList.toggle('active');
+  } else {
+    console.error('navLinks element not found');
+  }
+}
+
+function closeMenu() {
+  const navLinks = document.getElementById('navLinks');
+  if (navLinks) {
+    navLinks.classList.remove('active');
+  } else {
+    console.error('navLinks element not found');
+  }
+}
 
 // // Admin authorise access
 // document.querySelector('.cta-button').addEventListener('click', function (e) {

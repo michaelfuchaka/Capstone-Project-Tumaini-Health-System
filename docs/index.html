@@ -9,11 +9,16 @@
   <body>
     <nav class="navbar">
       <div class="logo">Tumaini Financial Tracker</div>
-      <ul class="nav-links">
-        <li><a href="#home-section">Home</a></li>
-        <li><a href="#form-section">Input</a></li>
-        <li><a href="#list-section">Transaction List</a></li>
-        <li><a href="#overview-section">Financial Overview</a></li>
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home-section" onclick="closeMenu()">Home</a></li>
+        <li><a href="#form-section" onclick="closeMenu()" >Input</a></li>
+        <li><a href="#list-section" onclick="closeMenu()" >Transaction List</a></li>
+        <li><a href="#overview-section" onclick="closeMenu()">Financial Overview</a></li>
       </ul>
     </nav>
     <!-- Home Section -->
