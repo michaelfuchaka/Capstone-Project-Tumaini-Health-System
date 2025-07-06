@@ -18,7 +18,7 @@ function renderTransactions() {
   `;
 
   // Fetch from JSON Server
-  fetch("https://tumaini-backend-1.onrender.com/transactions")
+  fetch("https://tumaini-backend-gxpa.onrender.com /transactions")
     .then((res) => res.json())
     .then((transactions) => {
       const tableBody = document.getElementById("transaction-table-body");
@@ -81,7 +81,7 @@ form.addEventListener("submit", (e) => {
   const newTransaction = { description, amount, type, category, date };
 
   // sending new transaction to json-server using post request
-  fetch("https://tumaini-backend-1.onrender.com/transactions", {
+  fetch("https://tumaini-backend-gxpa.onrender.com/transactions", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -142,7 +142,7 @@ function attachDeleteListeners() {
         confirmButtonText: "Yes, delete it!",
       }).then((result) => {
         if (result.isConfirmed) {
-          fetch(`https://tumaini-backend-1.onrender.com/transactions/${id}`, {
+          fetch(`https://tumaini-backend-gxpa.onrender.com/transactions/${id}`, {
             method: "DELETE",
           })
             .then(() => {
@@ -184,7 +184,7 @@ function attachEditListeners() {
     btn.addEventListener("click", () => {
       const id = btn.dataset.id;
 
-      fetch(`https://tumaini-backend-1.onrender.com/transactions/${id}`)
+      fetch(`https://tumaini-backend-gxpa.onrender.com/transactions/${id}`)
         .then((res) => res.json())
         .then((transaction) => {
           // fill input form
@@ -218,7 +218,7 @@ function attachEditListeners() {
               date: document.getElementById("date").value,
             };
 
-            fetch(`https://tumaini-backend-1.onrender.com/transactions/${id}`, {
+            fetch(`https://tumaini-backend-gxpa.onrender.com/transactions/${id}`, {
               method: "PUT",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify(updatedTransaction),
@@ -432,7 +432,7 @@ function closeMenu() {
 //       document.querySelector('.nav-links li:nth-child(4)').style.display = 'list-item'; // Financial Overview
 
 // // Fetch and render charts + transactions
-// fetch("https://tumaini-backend-1.onrender.com/transactions")
+// fetch("https://tumaini-backend-gxpa.onrender.com/transactions")
 //   .then((res) => res.json())
 //   .then((transactions) => {
 //     renderTransactions(); // Still needed for table

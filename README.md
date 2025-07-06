@@ -236,7 +236,7 @@ The application is fully responsive with breakpoints at:
 ## 🚀 Live Preview
 
 - **Frontend**: [GitHub Pages](https://michaelfuchaka.github.io/Capstone-Project-Tumaini-Health-System/)
-- **Backend**: [Render API](https://tumaini-backend-1.onrender.com)
+- **Backend**: [Render API](https://tumaini-backend-gxpa.onrender.com)
 
 ## Troubleshooting
 
