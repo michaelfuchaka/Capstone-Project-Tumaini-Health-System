@@ -18,7 +18,7 @@ function renderTransactions() {
   `;
 
   // Fetch from JSON Server
-  fetch("https://tumaini-backend-gxpa.onrender.com /transactions")
+  fetch("https://tumaini-backend-gxpa.onrender.com/transactions")
     .then((res) => res.json())
     .then((transactions) => {
       const tableBody = document.getElementById("transaction-table-body");
